@@ -1,10 +1,13 @@
 const router = require('express').Router()
 const {User} = require('../db/models')
 
-router.get('/', (req, res, next) => {
-  User.findAll()
-    .then(users => users.map(user => user.sanitize()))
-    .then(users => res.status(200).send(users))
+router.use('/:userID/accounts', require('./accounts'))
+router.use('/:userID/repos', require('./repos'))
+
+router.get('/:userID', (req, res, next) => {
+  User.findById(req.params.userID)
+    .then(user => user.sanitize())
+    .then(user => res.status(200).send(user))
     .catch(next)
 })
 

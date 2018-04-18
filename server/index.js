@@ -66,7 +66,7 @@ app.use((err, req, res, next) => {
 
 const port = 3000
 
-db.sync({force: true})
+db.sync({force: false})
   .then(() => app.listen(port, () => console.log('Listening on port ' + port)))
   .catch(console.error)
 
