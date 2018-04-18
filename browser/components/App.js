@@ -2,6 +2,7 @@ import React from 'react'
 import {BrowserRouter, Route} from 'react-router-dom'
 import {connect} from 'react-redux'
 import Login from './Login'
+import Repos from './Repos'
 
 const App = (props) => (
 
@@ -14,6 +15,7 @@ const App = (props) => (
         {'Redux store: ' + props.reduxState}
       </p>
       <Route path='/login' component={Login} />
+      <Route path='/' component={Repos} />
     </div>
   </BrowserRouter>
 )

@@ -1,6 +1,6 @@
 import {SET_CURRENT_USER} from '../actions'
 
-export default function (state = 'A new and virgin state', action) {
+export default function (state = 'No User', action) {
   switch (action.type) {
     case SET_CURRENT_USER:
       return {
