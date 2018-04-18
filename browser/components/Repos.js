@@ -1,25 +1,28 @@
 import React from 'react'
-import fetchRepos from '../redux/actions'
+import {fetchReposThunk} from '../redux/actions'
+import {connect} from 'react-redux'
 
 class Repos extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      repos: fetchRepos(props.history) || []
-    }
+
+  componentDidMount() {
+    this.props.fetchReposThunk(1)
   }
 
   render() {
     return (
       <div>
-        <h1>Repositories</h1>
+        <h1>My Repositories</h1>
         <div>
-          {this.state.repos.map(repo => (
-          <a href={repo}>{repo}</a>))}
+          {this.props.repos.length && this.props.repos.map(repo => (<a href={repo.url}>{repo.url}</a>))}
         </div>
       </div>
     )
   }
 }
 
-export default Repos
+const mapDispatch = {fetchReposThunk}
+const mapState = (state) => ({
+  repos: state.currentRepos
+})
+
+export default connect(mapState, mapDispatch)(Repos)

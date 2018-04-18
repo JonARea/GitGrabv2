@@ -1,13 +1,12 @@
 const router = require('express').Router()
 const {Repository} = require('../db/models')
 
-router.get('/:accountID/repos', (req, res, next) => {
+router.get('/', (req, res, next) => {
   Repository.findAll({
     where: {
-      accountID: req.params.accountID
+      accountId: 1
     }
   })
-    .then(Repositories => Repositories.map(Repository => Repository.sanitize()))
     .then(Repositories => res.status(200).send(Repositories))
     .catch(next)
 })
