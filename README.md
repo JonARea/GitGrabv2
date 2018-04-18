@@ -4,8 +4,8 @@
 
 ## Install Instructions
 
-npm install
-createdb testDB (or configure to work with another DB name)
+### npm install
+### createdb testDB (or configure to work with another DB name)
 
-npm run start-dev
+### npm run start-dev
 
